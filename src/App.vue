@@ -1,44 +1,20 @@
 <template>
   <div id="app">
-      <Header />
-      <AddToDo v-on:add-todo="addToDo"/>
-      <ToDos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+    <Header />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header';
-import ToDos from './components/ToDos';
-import AddToDo from './components/AddToDo';
-import axios from 'axios';
-
+import Header from './components/layout/Header'
 export default {
-  name: 'app',
-  components: {
-      Header,
-      ToDos,
-      AddToDo
-  },
-  data(){
-      return {
-        todos: []
-      }
-  },
-  methods:{
-      deleteTodo(id){
-          this.todos = this.todos.filter(todo => todo.id !== id);
-      },
-      addToDo(newToDo){
-          this.todos = [...this.todos, newToDo];
-      },
-      created(){
-          axios.get('https://jsonplaceholder.typicode.com/todos')
-          .then(res => this.todos = res.data)
-          .catch(err => console.log(err));
-      }
-  }
+    name:"app",
+    components:{
+        Header
+    }
 }
 </script>
+
 
 <style>
     *{
