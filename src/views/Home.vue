@@ -39,7 +39,7 @@ export default {
                 .then(res => this.todos = [...this.todos, res.data])
                 .catch(err => console.log(err));
 
-            this.todos = [...this.todos, newToDo];
+          
         }
     },
 
